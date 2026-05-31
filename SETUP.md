@@ -19,7 +19,7 @@ Le site utilise **Supabase** (gratuit) comme backend : authentification, profils
 
 1. **Project Settings** → **API**
 2. Copiez :
-   - **Project URL** (ex. `https://abcdefgh.supabase.co`)
+   - **Project URL** → ex. `https://abcdefgh.supabase.co` (**sans** `/rest/v1/`)
    - **anon public** key (clé publique)
 
 ## 4. Configurer le site

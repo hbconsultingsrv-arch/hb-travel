@@ -1,5 +1,12 @@
 let supabaseClient = null;
 
+function normalizeSupabaseUrl(url) {
+  if (!url) return url;
+  return url
+    .replace(/\/rest\/v1\/?$/i, '')
+    .replace(/\/+$/, '');
+}
+
 function isConfigured() {
   const cfg = window.HB_CONFIG;
   return cfg?.supabaseUrl && cfg?.supabaseAnonKey
@@ -11,7 +18,7 @@ function getSupabase() {
   if (!isConfigured()) return null;
   if (!supabaseClient && window.supabase) {
     supabaseClient = window.supabase.createClient(
-      window.HB_CONFIG.supabaseUrl,
+      normalizeSupabaseUrl(window.HB_CONFIG.supabaseUrl),
       window.HB_CONFIG.supabaseAnonKey
     );
   }
