@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon compte | HB Travel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/logo-icon.svg" type="image/svg+xml">
+</head>
+<body class="dashboard-page">
+  <nav class="nav nav-simple container">
+    <a href="index.html" class="logo">
+      <img src="assets/logo.svg" alt="HB Travel" class="logo-img" width="210" height="44">
+    </a>
+    <div class="nav-actions">
+      <a href="index.html#contact" class="btn btn-sm btn-primary">Nouvelle demande</a>
+      <button type="button" id="logoutBtn" class="btn btn-sm btn-outline-light">Déconnexion</button>
+    </div>
+  </nav>
+
+  <main class="dashboard-main container">
+    <header class="dashboard-header">
+      <div>
+        <span class="section-tag">Espace client</span>
+        <h1>Bonjour, <span id="welcomeName">—</span></h1>
+        <p class="auth-sub">Gérez vos informations personnelles et consultez vos demandes de voyage.</p>
+      </div>
+    </header>
+
+    <div class="dashboard-grid">
+      <section class="dashboard-card">
+        <h2>Mes informations</h2>
+        <form id="profileForm" class="auth-form">
+          <label>
+            Prénom & Nom
+            <input type="text" name="full_name" required>
+          </label>
+          <label>
+            E-mail
+            <input type="email" name="email" disabled>
+          </label>
+          <label>
+            Téléphone
+            <input type="tel" name="phone" required>
+          </label>
+          <label>
+            Adresse
+            <input type="text" name="address" placeholder="Votre adresse">
+          </label>
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+          <p class="form-note" id="profileNote"></p>
+        </form>
+      </section>
+
+      <section class="dashboard-card dashboard-card-wide">
+        <div class="dashboard-card-head">
+          <h2>Mes demandes</h2>
+          <a href="index.html#contact" class="btn btn-sm btn-primary">+ Nouvelle demande</a>
+        </div>
+        <div id="requestsEmpty" class="empty-state" hidden>
+          <p>Aucune demande pour le moment.</p>
+          <a href="index.html#contact" class="btn btn-sm btn-outline-dark">Demander un devis</a>
+        </div>
+        <div class="table-wrap">
+          <table class="requests-table" id="requestsTable" hidden>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Destination</th>
+                <th>Statut</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tbody id="requestsBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

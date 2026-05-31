@@ -1,31 +1,47 @@
 # HB Travel — Site vitrine voyages halal
 
-Site vitrine pour l'agence **HB Travel**, spécialisée en voyages halal (Omra, Hajj, séjours familiaux).
+Site vitrine avec **espace client** : inscription, connexion, profil et suivi des demandes.
 
-## Structure du projet
+## Pages
 
-```
-hb-travel/
-├── index.html      # Page principale
-├── css/style.css   # Styles
-├── js/main.js      # Interactions (menu, formulaire)
-└── README.md
-```
+| Fichier | Description |
+|---------|-------------|
+| `index.html` | Site vitrine + formulaire de devis |
+| `login.html` | Connexion |
+| `register.html` | Inscription |
+| `compte.html` | Espace client (profil + demandes) |
+
+## Backend (Supabase)
+
+Le site reste hébergé sur **GitHub Pages** (gratuit). Les données passent par **Supabase** (gratuit) :
+
+- Authentification e-mail / mot de passe
+- Profil : nom, e-mail, téléphone, adresse
+- Demandes de voyage avec statut
+
+**Configuration obligatoire** → voir **[SETUP.md](SETUP.md)**
 
 ## Lancer en local
 
-Ouvrez `index.html` dans votre navigateur, ou utilisez un serveur local :
-
 ```bash
-# Avec Python
 python -m http.server 8080
-
-# Avec Node.js (npx)
-npx serve .
 ```
 
-Puis allez sur http://localhost:8080
+Puis ouvrez http://localhost:8080
 
-## Déploiement gratuit
+## Structure
 
-Voir le guide complet dans ce README ou demander de l'aide pour GitHub Pages / Netlify.
+```
+hb-travel/
+├── index.html
+├── login.html
+├── register.html
+├── compte.html
+├── css/style.css
+├── js/
+│   ├── config.js          ← clés Supabase
+│   ├── auth.js
+│   ├── dashboard.js
+│   └── main.js
+└── supabase/schema.sql    ← script base de données
+```

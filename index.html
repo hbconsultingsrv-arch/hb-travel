@@ -25,6 +25,9 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#destinations">Destinations</a></li>
         <li><a href="#pourquoi">Pourquoi nous</a></li>
+        <li id="navAccount" style="display:none"><a href="compte.html">Mon compte</a></li>
+        <li id="navLogin"><a href="login.html">Connexion</a></li>
+        <li id="navLogout" style="display:none"><a href="#">Déconnexion</a></li>
         <li><a href="#contact" class="btn-nav">Devis gratuit</a></li>
       </ul>
     </nav>
@@ -182,6 +185,9 @@
           <span class="section-tag">Contact</span>
           <h2>Demandez votre devis gratuit</h2>
           <p>Réponse sous 24 h. Sans engagement.</p>
+          <p class="contact-login-hint" id="contactLoginHint">
+            <a href="login.html">Connectez-vous</a> pour enregistrer votre demande dans votre espace client.
+          </p>
           <ul class="contact-details">
             <li>📞 <a href="tel:+33752565123">+33 7 52 56 51 23</a></li>
             <li>✉️ <a href="mailto:hb.consulting.srv@gmail.com">hb.consulting.srv@gmail.com</a></li>
@@ -238,6 +244,8 @@
         <ul>
           <li><a href="#services">Services</a></li>
           <li><a href="#destinations">Destinations</a></li>
+          <li><a href="compte.html">Mon compte</a></li>
+          <li><a href="login.html">Connexion</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -255,6 +263,10 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/auth.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
