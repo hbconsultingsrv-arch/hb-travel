@@ -748,6 +748,8 @@ body {
 }
 
 .status-en_attente { background: #fff3cd; color: #856404; }
+.status-accepte { background: #d4edda; color: #155724; }
+.status-rejete { background: #f8d7da; color: #721c24; }
 .status-en_cours { background: #cce5ff; color: #004085; }
 .status-traite { background: #d4edda; color: #155724; }
 .status-annule { background: #f8d7da; color: #721c24; }
@@ -760,6 +762,98 @@ body {
 
 .empty-state p {
   margin-bottom: 1rem;
+}
+
+.loading-msg {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 2rem;
+  grid-column: 1 / -1;
+}
+
+.loading-msg.error {
+  color: #c0392b;
+}
+
+/* Admin dashboard */
+.admin-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-tab {
+  padding: 0.65rem 1.25rem;
+  border: 2px solid var(--green);
+  background: transparent;
+  color: var(--green-dark);
+  border-radius: 999px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-tab.active,
+.admin-tab:hover {
+  background: var(--green);
+  color: var(--white);
+}
+
+.admin-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.admin-form {
+  margin-top: 0.5rem;
+}
+
+.checkbox-label {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.5rem !important;
+  padding-top: 1.5rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-thumb {
+  width: 56px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.btn-success {
+  background: #28a745;
+  color: var(--white);
+  border: none;
+}
+
+.btn-success:hover {
+  background: #218838;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: var(--white);
+  border: none;
+}
+
+.btn-danger:hover {
+  background: #c82333;
 }
 
 @media (max-width: 768px) {

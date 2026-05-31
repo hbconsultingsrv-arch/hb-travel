@@ -8,6 +8,8 @@ const DESTINATION_LABELS = {
 
 const STATUS_LABELS = {
   en_attente: 'En attente',
+  accepte: 'Acceptée',
+  rejete: 'Rejetée',
   en_cours: 'En cours',
   traite: 'Traité',
   annule: 'Annulé'
@@ -123,6 +125,7 @@ function showAlert(el, message, type = 'error') {
 async function updateNavAuth() {
   const loginLink = document.getElementById('navLogin');
   const accountLink = document.getElementById('navAccount');
+  const adminLink = document.getElementById('navAdmin');
   const logoutBtn = document.getElementById('navLogout');
   if (!loginLink && !accountLink) return;
 
@@ -132,9 +135,17 @@ async function updateNavAuth() {
     if (loginLink) loginLink.style.display = 'none';
     if (accountLink) accountLink.style.display = '';
     if (logoutBtn) logoutBtn.style.display = '';
+    if (adminLink) {
+      let admin = false;
+      if (typeof isAdmin === 'function') {
+        admin = await isAdmin();
+      }
+      adminLink.style.display = admin ? '' : 'none';
+    }
   } else {
     if (loginLink) loginLink.style.display = '';
     if (accountLink) accountLink.style.display = 'none';
+    if (adminLink) adminLink.style.display = 'none';
     if (logoutBtn) logoutBtn.style.display = 'none';
   }
 

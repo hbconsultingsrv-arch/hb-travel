@@ -10,6 +10,7 @@ Site vitrine avec **espace client** : inscription, connexion, profil et suivi de
 | `login.html` | Connexion |
 | `register.html` | Inscription |
 | `compte.html` | Espace client (profil + demandes) |
+| `admin.html` | Dashboard admin (séjours + demandes) |
 
 ## Backend (Supabase)
 

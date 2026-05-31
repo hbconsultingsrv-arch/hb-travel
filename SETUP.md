@@ -42,7 +42,25 @@ window.HB_CONFIG = {
 
 > Pour les tests en local, ajoutez aussi `http://localhost:8080`
 
-## 6. Désactiver la confirmation e-mail (optionnel, pour tester)
+## 6. Activer l'espace admin (séjours + demandes)
+
+1. Exécutez aussi le script **`supabase/migration-v2-admin-sejours.sql`** dans SQL Editor
+2. Promouvez votre compte en admin (remplacez l'e-mail) :
+
+```sql
+update public.profiles set role = 'admin' where email = 'votre-email@gmail.com';
+```
+
+3. Connectez-vous → accédez à **`admin.html`**
+
+### Dashboard admin
+
+| Onglet | Fonctions |
+|--------|-----------|
+| **Séjours phares** | Ajouter, modifier, supprimer séjours (image, prix, description) |
+| **Demandes clients** | Accepter ou rejeter les demandes de devis |
+
+## 7. Désactiver la confirmation e-mail (optionnel, pour tester)
 
 **Authentication** → **Providers** → **Email** → désactivez **Confirm email** temporairement.
 

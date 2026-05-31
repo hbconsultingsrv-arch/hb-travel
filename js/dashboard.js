@@ -17,6 +17,10 @@ async function initDashboard() {
   currentUser = session.user;
   document.getElementById('logoutBtn')?.addEventListener('click', signOut);
 
+  if (await isAdmin()) {
+    document.getElementById('compteAdminLink').style.display = '';
+  }
+
   await loadProfileForm();
   await loadRequestsList();
 
@@ -73,14 +77,20 @@ async function loadRequestsList() {
 
   requests.forEach((req) => {
     const tr = document.createElement('tr');
+    tr.dataset.id = req.id;
+    tbody.appendChild(tr);
+  });
+
+  for (const tr of tbody.querySelectorAll('tr')) {
+    const req = requests.find((r) => r.id === tr.dataset.id);
+    const label = await getDestinationLabel(req.destination);
     tr.innerHTML = `
       <td>${formatDate(req.created_at)}</td>
-      <td>${DESTINATION_LABELS[req.destination] || req.destination}</td>
+      <td>${label}</td>
       <td><span class="status-badge status-${req.status}">${STATUS_LABELS[req.status] || req.status}</span></td>
       <td class="msg-cell">${req.message || '—'}</td>
     `;
-    tbody.appendChild(tr);
-  });
+  }
 }
 
 document.addEventListener('DOMContentLoaded', initDashboard);
