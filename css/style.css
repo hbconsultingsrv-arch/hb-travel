@@ -3,6 +3,8 @@
   --gold-light: #e8c547;
   --green: #1a5c4a;
   --green-dark: #0f3d32;
+  --navy: #0b1d3a;
+  --navy-light: #1a3a6b;
   --cream: #faf8f4;
   --text: #2c2c2c;
   --text-muted: #666;
@@ -61,19 +63,13 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
   text-decoration: none;
-  color: var(--white);
-  font-size: 1.25rem;
 }
 
-.logo-icon {
-  font-size: 1.5rem;
-  color: var(--gold);
-}
-
-.logo strong {
-  color: var(--gold-light);
+.logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
 }
 
 .nav-links {
