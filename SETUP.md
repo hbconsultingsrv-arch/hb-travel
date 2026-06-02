@@ -59,8 +59,17 @@ update public.profiles set role = 'admin' where email = 'votre-email@gmail.com';
 |--------|-----------|
 | **Séjours phares** | Ajouter, modifier, supprimer séjours (image, prix, description) |
 | **Demandes clients** | Accepter ou rejeter les demandes de devis |
+| **Avis clients** | Publier ou refuser les avis (étoiles + message) |
 
-## 7. Désactiver la confirmation e-mail (optionnel, pour tester)
+## 8. Avis clients (étoiles + modération)
+
+Exécutez aussi **`supabase/migration-v3-avis.sql`** dans SQL Editor.
+
+- Le client note un séjour ou une demande (1 à 5 étoiles) + message
+- L'avis reste **en attente** jusqu'à validation admin
+- Une fois **publié**, il apparaît sur la page d'accueil
+
+## 9. Désactiver la confirmation e-mail (optionnel, pour tester)
 
 **Authentication** → **Providers** → **Email** → désactivez **Confirm email** temporairement.
 

@@ -3,97 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="HB Travel — Agence spécialisée en voyages halal : Omra, Hajj, séjours familiaux 100% conformes à vos valeurs.">
-  <title>HB Travel | Voyages Halal & Omra</title>
+  <meta name="description" content="HB Travel — Agence spécialisée en voyages halal : Omra, Hajj, séjours familiaux 100% conformes à vos valeurs." data-i18n="meta.description">
+  <title data-i18n="meta.title">HB Travel | Voyages Halal & Omra</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/i18n.css">
   <link rel="icon" href="assets/logo-icon.svg" type="image/svg+xml">
 </head>
-<body>
-  <header class="header" id="accueil">
-    <nav class="nav container">
-      <a href="#" class="logo">
+<body class="home-page">
+  <header class="header-3d" id="accueil">
+    <div class="hero-dynamic-bg" aria-hidden="true">
+      <div class="hero-bg-layer hero-bg-a active" style="background-image: url('https://images.unsplash.com/photo-1579305796538-03268c05b65c?w=1600&q=85&auto=format&fit=crop')"></div>
+      <div class="hero-bg-layer hero-bg-b"></div>
+      <div class="hero-bg-overlay"></div>
+    </div>
+
+    <div class="hero-float-badges" aria-hidden="true">
+      <span class="float-chip chip-pos-1" id="bgChipPrice">dès 1 890 €</span>
+      <span class="float-chip chip-pos-2" id="bgChipStars">★★★★★ 4.9</span>
+      <span class="float-chip chip-pos-3" id="bgChipReviews">128 avis</span>
+      <span class="float-chip chip-pos-4" data-i18n="chip.halal">✓ 100% Halal</span>
+      <span class="float-chip chip-pos-5" id="bgChipTag">Omra</span>
+    </div>
+
+    <nav class="nav nav-3d container">
+      <a href="#accueil" class="logo">
         <img src="assets/logo.svg" alt="HB Travel — Voyages Halal" class="logo-img" width="210" height="44">
       </a>
-      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+      <button class="nav-toggle" data-i18n-aria="nav.menu" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <ul class="nav-links">
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#destinations">Destinations</a></li>
-        <li><a href="#pourquoi">Pourquoi nous</a></li>
-        <li id="navAccount" style="display:none"><a href="compte.html">Mon compte</a></li>
-        <li id="navAdmin" style="display:none"><a href="admin.html">Admin</a></li>
-        <li id="navLogin"><a href="login.html">Connexion</a></li>
-        <li id="navLogout" style="display:none"><a href="#">Déconnexion</a></li>
-        <li><a href="#contact" class="btn-nav">Devis gratuit</a></li>
+      <ul class="nav-links nav-links-3d">
+        <li><a href="#accueil" class="nav-btn-3d nav-btn-accueil" data-i18n="nav.home">Accueil</a></li>
+        <li><a href="#destinations" class="nav-btn-3d nav-btn-offres" data-i18n="nav.offers">Offres</a></li>
+        <li><a href="#pourquoi" class="nav-btn-3d nav-btn-pourquoi" data-i18n="nav.why">Pourquoi</a></li>
+        <li id="navAccount" style="display:none"><a href="compte.html" class="nav-btn-3d nav-btn-compte" data-i18n="nav.account">Compte</a></li>
+        <li id="navAdmin" style="display:none"><a href="admin.html" class="nav-btn-3d nav-btn-admin" data-i18n="nav.admin">Admin</a></li>
+        <li id="navLogin"><a href="login.html" class="nav-btn-3d nav-btn-login" data-i18n="nav.login">Connexion</a></li>
+        <li id="navLogout" style="display:none"><a href="#" class="nav-btn-3d nav-btn-login" data-i18n="nav.logout">Déconnexion</a></li>
+        <li><a href="#contact" class="nav-btn-3d nav-btn-devis" data-i18n="nav.quote">Devis</a></li>
       </ul>
     </nav>
 
-    <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-content container">
-        <p class="hero-badge">Agence certifiée voyages halal</p>
-        <h1>Voyagez en toute sérénité,<br><em>100% halal</em></h1>
-        <p class="hero-sub">Omra, Hajj et séjours familiaux avec hôtels certifiés, repas halal garantis et accompagnement personnalisé.</p>
-        <div class="hero-actions">
-          <a href="#destinations" class="btn btn-primary">Voir nos offres</a>
-          <a href="#contact" class="btn btn-outline">Demander un devis</a>
-        </div>
-        <div class="hero-stats">
-          <div><strong>2 500+</strong><span>Voyageurs satisfaits</span></div>
-          <div><strong>15</strong><span>Destinations halal</span></div>
-          <div><strong>10 ans</strong><span>D'expérience</span></div>
-        </div>
+    <section class="hero-3d">
+      <div class="hero-3d-title">
+        <p class="hero-badge" data-i18n="hero.badge">Agence certifiée voyages halal</p>
+        <h1><span data-i18n="hero.title">Trouvez des environnements halal</span> <span data-i18n="hero.titleHighlight">adaptés à vous</span></h1>
+        <p class="hero-lead" data-i18n-html="hero.lead">
+          Hôtels, Omra et voyages sur mesure — choisissez ce qui vous convient
+          tout en restant en <strong>mode halal</strong>, loin du haram.
+        </p>
+        <ul class="hero-pills" data-i18n-aria="hero.pillsAria" aria-label="Nos univers">
+          <li data-i18n="hero.pill1">Hôtels halal</li>
+          <li data-i18n="hero.pill2">Omra & pèlerinages</li>
+          <li data-i18n="hero.pill3">Voyages qui vous conviennent</li>
+        </ul>
       </div>
+
+      <div class="carousel-3d-wrap" id="carousel3d">
+        <button type="button" class="carousel-btn carousel-prev" data-i18n-aria="carousel.prev" aria-label="Précédent">‹</button>
+
+        <div class="carousel-3d-viewport">
+          <div class="carousel-3d-track" id="carouselTrack">
+            <article class="carousel-slide" data-filter="omra" data-index="0"
+              data-price="1 890 €" data-rating="4.9" data-reviews="128" data-tag-key="slide.omra.tag">
+              <img class="slide-photo" src="https://images.unsplash.com/photo-1579305796538-03268c05b65c?w=1600&q=85&auto=format&fit=crop" alt="La Mecque — Omra">
+              <div class="slide-content">
+                <span class="slide-tag" data-i18n="slide.omra.tag">Omra</span>
+                <h3 data-i18n="slide.omra.title">La Mecque</h3>
+                <p data-i18n="slide.omra.desc">Makkah & Madinah — Haram & guide inclus</p>
+              </div>
+            </article>
+            <article class="carousel-slide" data-filter="hotel" data-index="1"
+              data-price="799 €" data-rating="4.8" data-reviews="86" data-tag-key="slide.hotel.chip">
+              <img class="slide-photo" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600&q=85&auto=format&fit=crop" alt="Hôtel halal 5 étoiles">
+              <div class="slide-content">
+                <span class="slide-tag" data-i18n="slide.hotel.tag">Hôtel</span>
+                <h3 data-i18n="slide.hotel.title">Hôtels 5★ halal</h3>
+                <p data-i18n="slide.hotel.desc">Chambres premium · Cuisine certifiée</p>
+              </div>
+            </article>
+            <article class="carousel-slide" data-filter="halal" data-index="2"
+              data-price="799 €" data-rating="4.7" data-reviews="210" data-tag-key="slide.halal.chip">
+              <img class="slide-photo" src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1600&q=85&auto=format&fit=crop" alt="Voyage halal">
+              <div class="slide-content">
+                <span class="slide-tag" data-i18n="slide.halal.tag">Voyage</span>
+                <h3 data-i18n="slide.halal.title">Voyages halal</h3>
+                <p data-i18n="slide.halal.desc">Istanbul, Cappadoce & destinations</p>
+              </div>
+            </article>
+            <article class="carousel-slide" data-filter="famille" data-index="3"
+              data-price="649 €" data-rating="4.9" data-reviews="95" data-tag-key="slide.famille.chip">
+              <img class="slide-photo" src="https://images.unsplash.com/photo-1511893359861-06a0aca175e6?w=1600&q=85&auto=format&fit=crop" alt="Séjour en famille">
+              <div class="slide-content">
+                <span class="slide-tag" data-i18n="slide.famille.tag">Famille</span>
+                <h3 data-i18n="slide.famille.title">Séjours famille</h3>
+                <p data-i18n="slide.famille.desc">Voyages adaptés aux enfants</p>
+              </div>
+            </article>
+            <article class="carousel-slide" data-filter="halal" data-index="4"
+              data-price="1 450 €" data-rating="5.0" data-reviews="64" data-tag-key="slide.plage.chip">
+              <img class="slide-photo" src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600&q=85&auto=format&fit=crop" alt="Plage privée halal">
+              <div class="slide-content">
+                <span class="slide-tag" data-i18n="slide.plage.tag">Plage</span>
+                <h3 data-i18n="slide.plage.title">Plages privées</h3>
+                <p data-i18n="slide.plage.desc">Maldives & resorts halal-friendly</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <button type="button" class="carousel-btn carousel-next" data-i18n-aria="carousel.next" aria-label="Suivant">›</button>
+
+        <div class="carousel-dots" id="carouselDots"></div>
+        <p class="carousel-hint" data-i18n="carousel.hint">← Glissez ou utilisez les flèches →</p>
+      </div>
+
+      <span class="scroll-hint" data-i18n="scroll.hint">↓ Choisissez votre univers</span>
     </section>
   </header>
 
-  <main>
-    <section class="services section" id="services">
+  <section class="categories-3d" id="categories">
       <div class="container">
-        <header class="section-header">
-          <span class="section-tag">Nos services</span>
-          <h2>Tout est pensé pour vous</h2>
-          <p>De la réservation à votre retour, chaque détail respecte vos exigences religieuses et votre confort.</p>
-        </header>
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-icon">🕋</div>
-            <h3>Omra & Hajj</h3>
-            <p>Forfaits complets avec guide francophone, vols directs et hébergement proche du Haram.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon">🏨</div>
-            <h3>Hôtels certifiés halal</h3>
-            <p>Sélection rigoureuse : pas d'alcool, cuisine halal, espaces adaptés aux familles musulmanes.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon">✈️</div>
-            <h3>Vols & transferts</h3>
-            <p>Meilleurs tarifs, horaires optimisés et accueil à l'aéroport dès votre arrivée.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon">👨‍👩‍👧‍👦</div>
-            <h3>Voyages en famille</h3>
-            <p>Programmes adaptés aux enfants, activités respectueuses et plages privées séparées.</p>
-          </article>
+        <h2 data-i18n="cat.title">Choisissez votre voyage</h2>
+        <p class="cat-sub" data-i18n="cat.sub">Glissez les cartes · touchez pour filtrer les offres</p>
+        <div class="categories-swiper" id="categoriesSwiper">
+          <div class="categories-track">
+          <a href="#destinations" class="cat-card-3d cat-omra" data-filter="omra">
+            <span class="cat-icon">🕋</span>
+            <h3 data-i18n="cat.omra">Omra</h3>
+            <p data-i18n="cat.omraDesc">Makkah, Madinah & Hajj</p>
+          </a>
+          <a href="#destinations" class="cat-card-3d cat-halal" data-filter="halal">
+            <span class="cat-icon">✈️</span>
+            <h3 data-i18n="cat.halal">Voyage halal</h3>
+            <p data-i18n="cat.halalDesc">Destinations certifiées</p>
+          </a>
+          <a href="#destinations" class="cat-card-3d cat-famille" data-filter="famille">
+            <span class="cat-icon">👨‍👩‍👧‍👦</span>
+            <h3 data-i18n="cat.famille">Famille</h3>
+            <p data-i18n="cat.familleDesc">Séjours adaptés aux enfants</p>
+          </a>
+          <a href="#destinations" class="cat-card-3d cat-hotel" data-filter="hotel">
+            <span class="cat-icon">🏨</span>
+            <h3 data-i18n="cat.hotel">Hôtel</h3>
+            <p data-i18n="cat.hotelDesc">Hébergements premium halal</p>
+          </a>
+          </div>
         </div>
       </div>
     </section>
 
+  <main>
     <section class="destinations section" id="destinations">
       <div class="container">
         <header class="section-header">
-          <span class="section-tag">Destinations</span>
-          <h2>Nos séjours phares</h2>
-          <p>Des expériences inoubliables, conformes à vos valeurs.</p>
+          <span class="section-tag" data-i18n="dest.tag">Destinations</span>
+          <h2 data-i18n="dest.title">Nos séjours phares</h2>
+          <p data-i18n="dest.sub">Des expériences inoubliables, conformes à vos valeurs.</p>
+          <p class="filter-active-msg" id="filterActiveMsg"></p>
         </header>
         <div class="destinations-grid" id="destinationsGrid">
-          <p class="loading-msg">Chargement des séjours…</p>
+          <p class="loading-msg" data-i18n="dest.loading">Chargement des séjours…</p>
         </div>
       </div>
     </section>
@@ -101,33 +175,30 @@
     <section class="why section" id="pourquoi">
       <div class="container why-grid">
         <div class="why-content">
-          <span class="section-tag">Pourquoi HB Travel</span>
-          <h2>La confiance de milliers de familles musulmanes</h2>
+          <span class="section-tag" data-i18n="why.tag">Pourquoi HB Travel</span>
+          <h2 data-i18n="why.title">La confiance de milliers de familles musulmanes</h2>
           <ul class="why-list">
             <li>
-              <strong>✓ 100 % halal garanti</strong>
-              <p>Chaque hôtel, restaurant et activité est vérifié par notre équipe.</p>
+              <strong data-i18n="why.1t">✓ 100 % halal garanti</strong>
+              <p data-i18n="why.1d">Chaque hôtel, restaurant et activité est vérifié par notre équipe.</p>
             </li>
             <li>
-              <strong>✓ Accompagnement humain</strong>
-              <p>Un conseiller dédié avant, pendant et après votre voyage.</p>
+              <strong data-i18n="why.2t">✓ Accompagnement humain</strong>
+              <p data-i18n="why.2d">Un conseiller dédié avant, pendant et après votre voyage.</p>
             </li>
             <li>
-              <strong>✓ Paiement flexible</strong>
-              <p>Échelonnement possible sur 3 à 6 mois sans frais cachés.</p>
+              <strong data-i18n="why.3t">✓ Paiement flexible</strong>
+              <p data-i18n="why.3d">Échelonnement possible sur 3 à 6 mois sans frais cachés.</p>
             </li>
             <li>
-              <strong>✓ Assistance 24h/24</strong>
-              <p>Hotline en français disponible durant tout votre séjour.</p>
+              <strong data-i18n="why.4t">✓ Assistance 24h/24</strong>
+              <p data-i18n="why.4d">Hotline en français disponible durant tout votre séjour.</p>
             </li>
           </ul>
         </div>
-        <div class="why-visual">
+        <div class="why-visual" id="testimonialsContainer">
           <div class="testimonial">
-            <blockquote>
-              « HB Travel a organisé notre Omra en famille. Tout était parfait : proximité du Haram, repas halal, et un guide très pédagogue pour nos enfants. »
-            </blockquote>
-            <cite>— Fatima & Karim, Lyon</cite>
+            <blockquote data-i18n="testimonial.loading">Chargement des avis clients…</blockquote>
           </div>
         </div>
       </div>
@@ -136,10 +207,10 @@
     <section class="contact section" id="contact">
       <div class="container contact-grid">
         <div class="contact-info">
-          <span class="section-tag">Contact</span>
-          <h2>Demandez votre devis gratuit</h2>
-          <p>Réponse sous 24 h. Sans engagement.</p>
-          <p class="contact-login-hint" id="contactLoginHint">
+          <span class="section-tag" data-i18n="contact.tag">Contact</span>
+          <h2 data-i18n="contact.title">Demandez votre devis gratuit</h2>
+          <p data-i18n="contact.sub">Réponse sous 24 h. Sans engagement.</p>
+          <p class="contact-login-hint" id="contactLoginHint" data-i18n-html="contact.loginHint">
             <a href="login.html">Connectez-vous</a> pour enregistrer votre demande dans votre espace client.
           </p>
           <ul class="contact-details">
@@ -151,29 +222,29 @@
         <form class="contact-form" id="contactForm">
           <div class="form-row">
             <label>
-              Prénom & Nom
-              <input type="text" name="name" required placeholder="Votre nom">
+              <span data-i18n="contact.name">Prénom & Nom</span>
+              <input type="text" name="name" required data-i18n-placeholder="contact.namePh" placeholder="Votre nom">
             </label>
             <label>
-              Téléphone
-              <input type="tel" name="phone" required placeholder="06 12 34 56 78">
+              <span data-i18n="contact.phone">Téléphone</span>
+              <input type="tel" name="phone" required data-i18n-placeholder="contact.phonePh" placeholder="06 12 34 56 78">
             </label>
           </div>
           <label>
-            E-mail
-            <input type="email" name="email" required placeholder="vous@email.fr">
+            <span data-i18n="contact.email">E-mail</span>
+            <input type="email" name="email" required data-i18n-placeholder="contact.emailPh" placeholder="vous@email.fr">
           </label>
           <label>
-            Destination souhaitée
+            <span data-i18n="contact.destination">Destination souhaitée</span>
             <select name="destination" required>
-              <option value="">Chargement des destinations…</option>
+              <option value="" data-i18n="dest.loading">Chargement des destinations…</option>
             </select>
           </label>
           <label>
-            Message
-            <textarea name="message" rows="4" placeholder="Dates, nombre de personnes, besoins particuliers…"></textarea>
+            <span data-i18n="contact.message">Message</span>
+            <textarea name="message" rows="4" data-i18n-placeholder="contact.messagePh" placeholder="Dates, nombre de personnes, besoins particuliers…"></textarea>
           </label>
-          <button type="submit" class="btn btn-primary btn-full">Envoyer ma demande</button>
+          <button type="submit" class="btn btn-primary btn-full" data-i18n="contact.send">Envoyer ma demande</button>
           <p class="form-note" id="formNote"></p>
         </form>
       </div>
@@ -186,38 +257,42 @@
         <a href="#" class="logo">
           <img src="assets/logo.svg" alt="HB Travel — Voyages Halal" class="logo-img" width="210" height="44">
         </a>
-        <p>Votre agence de confiance pour des voyages halal inoubliables.</p>
+        <p data-i18n="footer.tagline">Votre agence de confiance pour des voyages halal inoubliables.</p>
       </div>
       <div>
-        <h4>Liens utiles</h4>
+        <h4 data-i18n="footer.links">Liens utiles</h4>
         <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#destinations">Destinations</a></li>
-          <li><a href="compte.html">Mon compte</a></li>
-          <li><a href="login.html">Connexion</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#destinations" data-i18n="dest.tag">Destinations</a></li>
+          <li><a href="compte.html" data-i18n="nav.account">Mon compte</a></li>
+          <li><a href="login.html" data-i18n="nav.login">Connexion</a></li>
+          <li><a href="#contact" data-i18n="contact.tag">Contact</a></li>
         </ul>
       </div>
       <div>
-        <h4>Légal</h4>
+        <h4 data-i18n="footer.legal">Légal</h4>
         <ul>
-          <li><a href="#">Mentions légales</a></li>
-          <li><a href="#">CGV</a></li>
-          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#" data-i18n="footer.legalNotice">Mentions légales</a></li>
+          <li><a href="#" data-i18n="footer.cgv">CGV</a></li>
+          <li><a href="#" data-i18n="footer.privacy">Politique de confidentialité</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom container">
-      <p>© 2026 HB Travel. Tous droits réservés.</p>
+      <p data-i18n="footer.rights">© 2026 HB Travel. Tous droits réservés.</p>
     </div>
   </footer>
 
+  <script src="js/locales.js"></script>
+  <script src="js/sejour-i18n.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/config.js"></script>
   <script src="js/supabase-client.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/admin-api.js"></script>
+  <script src="js/avis.js"></script>
   <script src="js/sejours.js"></script>
+  <script src="js/home.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

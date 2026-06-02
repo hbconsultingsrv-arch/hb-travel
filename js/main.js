@@ -21,7 +21,7 @@ async function prefillContactForm() {
   if (!session || !contactForm) return;
 
   if (contactLoginHint) {
-    contactLoginHint.innerHTML = 'Connecté — votre demande sera enregistrée dans <a href="compte.html">votre espace client</a>.';
+    contactLoginHint.innerHTML = typeof t === 'function' ? t('contact.loggedHint') : 'Connecté — votre demande sera enregistrée dans <a href="compte.html">votre espace client</a>.';
   }
 
   try {
@@ -39,7 +39,7 @@ contactForm?.addEventListener('submit', async (e) => {
   const fd = new FormData(contactForm);
 
   if (!session) {
-    formNote.textContent = 'Connectez-vous pour enregistrer votre demande et la suivre en ligne.';
+    formNote.textContent = typeof t === 'function' ? t('contact.needLogin') : 'Connectez-vous pour enregistrer votre demande et la suivre en ligne.';
     formNote.className = 'form-note error';
     setTimeout(() => { window.location.href = 'login.html?redirect=index.html'; }, 2000);
     return;
@@ -65,23 +65,16 @@ contactForm?.addEventListener('submit', async (e) => {
       phone: fd.get('phone')
     }).catch(() => {});
 
-    formNote.textContent = 'Demande enregistrée ! Consultez-la dans votre espace client.';
+    formNote.textContent = typeof t === 'function' ? t('contact.success') : 'Demande enregistrée ! Consultez-la dans votre espace client.';
     formNote.className = 'form-note success';
     contactForm.reset();
     prefillContactForm();
   } catch (err) {
-    formNote.textContent = err.message || 'Erreur lors de l\'envoi. Réessayez ou contactez-nous par téléphone.';
+    formNote.textContent = err.message || (typeof t === 'function' ? t('contact.error') : 'Erreur lors de l\'envoi. Réessayez ou contactez-nous par téléphone.');
     formNote.className = 'form-note error';
   }
 });
 
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('.nav');
-  if (window.scrollY > 50) {
-    nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.2)';
-  } else {
-    nav.style.boxShadow = 'none';
-  }
-});
+/* scroll géré par home.js pour .nav-3d */
 
 document.addEventListener('DOMContentLoaded', prefillContactForm);

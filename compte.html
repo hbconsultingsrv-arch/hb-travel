@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/i18n.css">
   <link rel="icon" href="assets/logo-icon.svg" type="image/svg+xml">
 </head>
 <body class="dashboard-page">
@@ -80,13 +81,76 @@
         </div>
       </section>
     </div>
+
+    <section class="dashboard-card dashboard-card-wide" style="margin-top:1.5rem">
+      <h2>Laisser un avis</h2>
+      <p class="auth-sub">Notez un séjour ou une demande de voyage. Votre avis sera publié après validation par notre équipe.</p>
+
+      <form id="avisForm" class="auth-form">
+        <div class="form-row">
+          <label>
+            Type d'avis
+            <select name="avis_type" id="avisType" required>
+              <option value="">Choisir…</option>
+              <option value="sejour">Séjour / article</option>
+              <option value="demande">Ma demande de voyage</option>
+            </select>
+          </label>
+          <label>
+            Concernant
+            <select name="target_id" id="avisTarget" required disabled>
+              <option value="">Choisir le type d'abord</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Votre note
+          <div id="starRatingContainer"></div>
+          <input type="hidden" name="rating" id="avisRating" required>
+        </label>
+
+        <label>
+          Votre message
+          <textarea name="message" rows="4" required placeholder="Partagez votre expérience…"></textarea>
+        </label>
+
+        <button type="submit" class="btn btn-primary">Envoyer mon avis</button>
+        <p class="form-note" id="avisNote"></p>
+      </form>
+    </section>
+
+    <section class="dashboard-card dashboard-card-wide" style="margin-top:1.5rem">
+      <h2>Mes avis</h2>
+      <div id="myAvisEmpty" class="empty-state" hidden>
+        <p>Vous n'avez pas encore laissé d'avis.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="requests-table" id="myAvisTable" hidden>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Concernant</th>
+              <th>Note</th>
+              <th>Message</th>
+              <th>Statut</th>
+            </tr>
+          </thead>
+          <tbody id="myAvisBody"></tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
+  <script src="js/locales.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/config.js"></script>
   <script src="js/supabase-client.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/admin-api.js"></script>
+  <script src="js/sejours.js"></script>
+  <script src="js/avis.js"></script>
   <script src="js/dashboard.js"></script>
 </body>
 </html>

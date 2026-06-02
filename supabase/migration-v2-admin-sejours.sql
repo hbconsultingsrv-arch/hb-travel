@@ -80,13 +80,13 @@ create trigger sejours_updated_at
 -- Données initiales (ignorées si slug existe déjà)
 insert into public.sejours (title, description, price, image_url, tag, slug, sort_order) values
   ('Omra Premium — Makkah & Madinah', '10 jours · Hôtel 5★ face au Haram · Guide inclus', 1890,
-   'https://images.unsplash.com/photo-1591604120669-370153677687?w=600&q=80', 'Best-seller', 'omra', 1),
+   'https://images.unsplash.com/photo-1579305796538-03268c05b65c?w=800&q=85&auto=format&fit=crop', 'Best-seller', 'omra', 1),
   ('Turquie — Istanbul & Cappadoce', '8 jours · Hôtels halal · Excursions culturelles', 799,
-   'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=80', 'Famille', 'turquie', 2),
+   'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=85&auto=format&fit=crop', 'Famille', 'turquie', 2),
   ('Maldives — Resort halal-friendly', '7 jours · Plage privée · Spa & détente', 1450,
-   'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80', 'Plage', 'maldives', 3),
+   'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=85&auto=format&fit=crop', 'Plage', 'maldives', 3),
   ('Maroc — Marrakech & Essaouira', '6 jours · Riad authentique · Cuisine locale halal', 549,
-   'https://images.unsplash.com/photo-1580418827493-f2b062c0a640?w=600&q=80', 'Découverte', 'maroc', 4)
+   'https://images.unsplash.com/photo-1560769629-847638654886?w=800&q=85&auto=format&fit=crop', 'Découverte', 'maroc', 4)
 on conflict (slug) do nothing;
 
 -- ═══ Promouvoir votre compte en admin ═══

@@ -1,98 +1,202 @@
 <!DOCTYPE html>
+
 <html lang="fr">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inscription | HB Travel</title>
+
+  <title data-i18n="auth.registerTitle">Inscription | HB Travel</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="css/i18n.css">
+
   <link rel="icon" href="assets/logo-icon.svg" type="image/svg+xml">
+
 </head>
+
 <body class="auth-page">
+
   <nav class="nav nav-simple container">
+
     <a href="index.html" class="logo">
+
       <img src="assets/logo.svg" alt="HB Travel" class="logo-img" width="210" height="44">
+
     </a>
-    <a href="login.html" class="btn btn-sm btn-outline-light">Connexion</a>
+
+    <a href="login.html" class="btn btn-sm btn-outline-light" data-i18n="nav.login">Connexion</a>
+
   </nav>
 
+
+
   <main class="auth-main container">
+
     <div class="auth-card auth-card-wide">
-      <span class="section-tag">Espace client</span>
-      <h1>Créer un compte</h1>
-      <p class="auth-sub">Inscrivez-vous pour gérer vos informations et vos demandes de devis.</p>
+
+      <span class="section-tag" data-i18n="auth.clientSpace">Espace client</span>
+
+      <h1 data-i18n="auth.registerTitle">Créer un compte</h1>
+
+      <p class="auth-sub" data-i18n="auth.registerSub">Inscrivez-vous pour gérer vos informations et vos demandes de devis.</p>
+
+
 
       <form id="registerForm" class="auth-form">
+
         <div class="form-row">
+
           <label>
-            Prénom & Nom
-            <input type="text" name="fullName" required placeholder="Votre nom">
+
+            <span data-i18n="contact.name">Prénom & Nom</span>
+
+            <input type="text" name="fullName" required data-i18n-placeholder="contact.namePh" placeholder="Votre nom">
+
           </label>
+
           <label>
-            Téléphone
+
+            <span data-i18n="contact.phone">Téléphone</span>
+
             <input type="tel" name="phone" required placeholder="07 52 56 51 23">
+
           </label>
+
         </div>
+
         <label>
-          E-mail
-          <input type="email" name="email" required placeholder="vous@email.fr" autocomplete="email">
+
+          <span data-i18n="contact.email">E-mail</span>
+
+          <input type="email" name="email" required data-i18n-placeholder="contact.emailPh" placeholder="vous@email.fr" autocomplete="email">
+
         </label>
+
         <label>
-          Mot de passe
-          <input type="password" name="password" required placeholder="6 caractères minimum" minlength="6" autocomplete="new-password">
+
+          <span data-i18n="auth.password">Mot de passe</span>
+
+          <input type="password" name="password" required data-i18n-placeholder="auth.passwordPh" placeholder="6 caractères minimum" minlength="6" autocomplete="new-password">
+
         </label>
+
         <label>
-          Confirmer le mot de passe
+
+          <span data-i18n="auth.passwordConfirm">Confirmer le mot de passe</span>
+
           <input type="password" name="passwordConfirm" required placeholder="••••••••" minlength="6" autocomplete="new-password">
+
         </label>
-        <button type="submit" class="btn btn-primary btn-full">Créer mon compte</button>
+
+        <button type="submit" class="btn btn-primary btn-full" data-i18n="auth.registerBtn">Créer mon compte</button>
+
         <p class="form-note" id="registerNote"></p>
+
       </form>
 
-      <p class="auth-switch">Déjà inscrit ? <a href="login.html">Connectez-vous</a></p>
+
+
+      <p class="auth-switch"><span data-i18n="auth.registerSwitch">Déjà inscrit ?</span> <a href="login.html" data-i18n="auth.registerSwitchLink">Connectez-vous</a></p>
+
     </div>
+
   </main>
 
+
+
+  <script src="js/locales.js"></script>
+
+  <script src="js/i18n.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script src="js/config.js"></script>
+
   <script src="js/supabase-client.js"></script>
+
   <script src="js/auth.js"></script>
+
   <script>
+
     document.getElementById('registerForm').addEventListener('submit', async (e) => {
+
       e.preventDefault();
+
       const note = document.getElementById('registerNote');
+
       const fd = new FormData(e.target);
 
+
+
       if (fd.get('password') !== fd.get('passwordConfirm')) {
-        showAlert(note, 'Les mots de passe ne correspondent pas.');
+
+        showAlert(note, t('auth.passwordMismatch'));
+
         return;
+
       }
+
+
 
       if (!isConfigured()) {
+
         showAlert(note, configErrorMessage());
+
         return;
+
       }
+
+
 
       try {
+
         const { user } = await signUp({
+
           email: fd.get('email'),
+
           password: fd.get('password'),
+
           fullName: fd.get('fullName'),
+
           phone: fd.get('phone')
+
         });
 
+
+
         if (user && !user.confirmed_at) {
-          showAlert(note, 'Compte créé ! Vérifiez votre e-mail pour confirmer, puis connectez-vous.', 'success');
+
+          showAlert(note, t('auth.registerSuccess'), 'success');
+
           e.target.reset();
+
         } else {
+
           window.location.href = 'compte.html';
+
         }
+
       } catch (err) {
-        showAlert(note, err.message || 'Erreur lors de l\'inscription.');
+
+        showAlert(note, err.message || t('auth.registerError'));
+
       }
+
     });
+
   </script>
+
 </body>
+
 </html>
+

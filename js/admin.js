@@ -43,6 +43,7 @@ async function initAdmin() {
 
   await loadSejoursAdmin();
   await loadRequestsAdmin();
+  await loadAvisAdmin();
 }
 
 async function loadSejoursAdmin() {
@@ -198,6 +199,60 @@ async function setRequestStatus(id, status) {
   try {
     await updateRequestStatus(id, status);
     await loadRequestsAdmin();
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
+async function loadAvisAdmin() {
+  const tbody = document.getElementById('avisAdminBody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+
+  try {
+    const avisList = await fetchAllAvisAdmin();
+    if (!avisList.length) {
+      tbody.innerHTML = '<tr><td colspan="7">Aucun avis pour le moment.</td></tr>';
+      return;
+    }
+
+    avisList.forEach((a) => {
+      const statusClass = a.status === 'approuve' ? 'accepte' : (a.status === 'refuse' ? 'rejete' : 'en_attente');
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${formatDate(a.created_at)}</td>
+        <td>${escapeHtml(a.author_name)}</td>
+        <td>${escapeHtml(a.target_label)}</td>
+        <td>${renderStars(a.rating)}</td>
+        <td class="msg-cell">${escapeHtml(a.message)}</td>
+        <td><span class="status-badge status-${statusClass}">${AVIS_STATUS_LABELS[a.status] || a.status}</span></td>
+        <td class="admin-actions">
+          ${a.status === 'en_attente' ? `
+            <button type="button" class="btn btn-sm btn-success" data-approve-avis="${a.id}">Publier</button>
+            <button type="button" class="btn btn-sm btn-danger" data-reject-avis="${a.id}">Refuser</button>
+          ` : '—'}
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    tbody.querySelectorAll('[data-approve-avis]').forEach((btn) => {
+      btn.addEventListener('click', () => moderateAvis(btn.dataset.approveAvis, 'approuve'));
+    });
+    tbody.querySelectorAll('[data-reject-avis]').forEach((btn) => {
+      btn.addEventListener('click', () => moderateAvis(btn.dataset.rejectAvis, 'refuse'));
+    });
+  } catch (err) {
+    tbody.innerHTML = `<tr><td colspan="7">${escapeHtml(err.message)}</td></tr>`;
+  }
+}
+
+async function moderateAvis(id, status) {
+  const label = status === 'approuve' ? 'publier' : 'refuser';
+  if (!confirm(`Confirmer : ${label} cet avis ?`)) return;
+  try {
+    await updateAvisStatus(id, status);
+    await loadAvisAdmin();
   } catch (err) {
     alert(err.message);
   }
