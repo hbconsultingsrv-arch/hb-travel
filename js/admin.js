@@ -14,6 +14,11 @@ function formatPrice(price) {
   }).format(price);
 }
 
+function formatStars(rating) {
+  const safeRating = Math.max(0, Math.min(5, Number(rating) || 0));
+  return `${'★'.repeat(safeRating)}${'☆'.repeat(5 - safeRating)}`;
+}
+
 function switchTab(tabId) {
   document.querySelectorAll('.admin-tab').forEach((t) => t.classList.toggle('active', t.dataset.tab === tabId));
   document.querySelectorAll('.admin-panel').forEach((p) => p.hidden = p.id !== `panel-${tabId}`);
@@ -43,6 +48,7 @@ async function initAdmin() {
 
   await loadSejoursAdmin();
   await loadRequestsAdmin();
+  await loadReviewsAdmin();
 }
 
 async function loadSejoursAdmin() {
@@ -160,17 +166,19 @@ async function loadRequestsAdmin() {
   try {
     const requests = await fetchAllRequests();
     if (!requests.length) {
-      tbody.innerHTML = '<tr><td colspan="6">Aucune demande pour le moment.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="7">Aucune demande pour le moment.</td></tr>';
       return;
     }
 
     for (const req of requests) {
       const label = await getDestinationLabel(req.destination);
+      const bookingType = BOOKING_TYPE_LABELS[req.booking_type] || 'Réservation libre';
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td>${formatDate(req.created_at)}</td>
         <td>${escapeHtml(req.full_name)}<br><small>${escapeHtml(req.email)} · ${escapeHtml(req.phone)}</small></td>
         <td>${escapeHtml(label)}</td>
+        <td>${escapeHtml(bookingType)}</td>
         <td class="msg-cell">${escapeHtml(req.message || '—')}</td>
         <td><span class="status-badge status-${req.status}">${STATUS_LABELS[req.status] || req.status}</span></td>
         <td class="admin-actions">
@@ -190,7 +198,7 @@ async function loadRequestsAdmin() {
       btn.addEventListener('click', () => setRequestStatus(btn.dataset.reject, 'rejete'));
     });
   } catch (err) {
-    tbody.innerHTML = `<tr><td colspan="6">${escapeHtml(err.message)}</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7">${escapeHtml(err.message)}</td></tr>`;
   }
 }
 
@@ -198,6 +206,55 @@ async function setRequestStatus(id, status) {
   try {
     await updateRequestStatus(id, status);
     await loadRequestsAdmin();
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
+async function loadReviewsAdmin() {
+  const tbody = document.getElementById('reviewsAdminBody');
+  tbody.innerHTML = '';
+
+  try {
+    const reviews = await fetchAllReviews();
+    if (!reviews.length) {
+      tbody.innerHTML = '<tr><td colspan="6">Aucun avis pour le moment.</td></tr>';
+      return;
+    }
+
+    reviews.forEach((review) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${formatDate(review.created_at)}</td>
+        <td>${escapeHtml(review.full_name || 'Voyageur HB Travel')}</td>
+        <td><span class="review-stars">${formatStars(review.rating)}</span></td>
+        <td class="msg-cell">${escapeHtml(review.comment)}</td>
+        <td><span class="status-badge status-${review.status}">${REVIEW_STATUS_LABELS[review.status] || review.status}</span></td>
+        <td class="admin-actions">
+          ${review.status === 'en_attente' ? `
+            <button type="button" class="btn btn-sm btn-success" data-approve-review="${review.id}">Approuver</button>
+            <button type="button" class="btn btn-sm btn-danger" data-reject-review="${review.id}">Rejeter</button>
+          ` : '—'}
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    tbody.querySelectorAll('[data-approve-review]').forEach((btn) => {
+      btn.addEventListener('click', () => setReviewStatus(btn.dataset.approveReview, 'approuve'));
+    });
+    tbody.querySelectorAll('[data-reject-review]').forEach((btn) => {
+      btn.addEventListener('click', () => setReviewStatus(btn.dataset.rejectReview, 'rejete'));
+    });
+  } catch (err) {
+    tbody.innerHTML = `<tr><td colspan="6">${escapeHtml(err.message)}</td></tr>`;
+  }
+}
+
+async function setReviewStatus(id, status) {
+  try {
+    await updateReviewStatus(id, status);
+    await loadReviewsAdmin();
   } catch (err) {
     alert(err.message);
   }

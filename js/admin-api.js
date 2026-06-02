@@ -74,6 +74,55 @@ async function updateRequestStatus(id, status) {
   return data;
 }
 
+async function fetchApprovedReviews() {
+  const sb = getSupabase();
+  if (!sb) return [];
+  const { data, error } = await sb
+    .from('reviews')
+    .select('*')
+    .eq('status', 'approuve')
+    .order('created_at', { ascending: false })
+    .limit(6);
+  if (error) throw error;
+  return data || [];
+}
+
+async function createReview(userId, review) {
+  const sb = getSupabase();
+  if (!sb) throw new Error(configErrorMessage());
+  const { data, error } = await sb
+    .from('reviews')
+    .insert({ user_id: userId, ...review })
+    .select()
+    .single();
+  if (error) throw error;
+  return data;
+}
+
+async function fetchAllReviews() {
+  const sb = getSupabase();
+  if (!sb) return [];
+  const { data, error } = await sb
+    .from('reviews')
+    .select('*')
+    .order('created_at', { ascending: false });
+  if (error) throw error;
+  return data || [];
+}
+
+async function updateReviewStatus(id, status) {
+  const sb = getSupabase();
+  if (!sb) throw new Error(configErrorMessage());
+  const { data, error } = await sb
+    .from('reviews')
+    .update({ status, reviewed_at: new Date().toISOString() })
+    .eq('id', id)
+    .select()
+    .single();
+  if (error) throw error;
+  return data;
+}
+
 function slugify(text) {
   return text
     .toLowerCase()

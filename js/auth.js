@@ -15,6 +15,17 @@ const STATUS_LABELS = {
   annule: 'Annulé'
 };
 
+const BOOKING_TYPE_LABELS = {
+  reservation_libre: 'Réservation libre',
+  evenement_groupe: 'Évènement en groupe'
+};
+
+const REVIEW_STATUS_LABELS = {
+  en_attente: 'En attente',
+  approuve: 'Approuvé',
+  rejete: 'Rejeté'
+};
+
 async function getSession() {
   const sb = getSupabase();
   if (!sb) return null;

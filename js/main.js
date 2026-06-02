@@ -57,6 +57,7 @@ contactForm?.addEventListener('submit', async (e) => {
       phone: fd.get('phone'),
       email: fd.get('email'),
       destination: fd.get('destination'),
+      booking_type: fd.get('booking_type'),
       message: fd.get('message') || ''
     });
 

@@ -84,9 +84,11 @@ async function loadRequestsList() {
   for (const tr of tbody.querySelectorAll('tr')) {
     const req = requests.find((r) => r.id === tr.dataset.id);
     const label = await getDestinationLabel(req.destination);
+    const bookingType = BOOKING_TYPE_LABELS[req.booking_type] || 'Réservation libre';
     tr.innerHTML = `
       <td>${formatDate(req.created_at)}</td>
       <td>${label}</td>
+      <td>${bookingType}</td>
       <td><span class="status-badge status-${req.status}">${STATUS_LABELS[req.status] || req.status}</span></td>
       <td class="msg-cell">${req.message || '—'}</td>
     `;
