@@ -42,16 +42,17 @@ window.HB_CONFIG = {
 
 > Pour les tests en local, ajoutez aussi `http://localhost:8080`
 
-## 6. Activer l'espace admin (séjours + demandes)
+## 6. Activer l'espace admin (séjours + demandes + avis)
 
 1. Exécutez aussi le script **`supabase/migration-v2-admin-sejours.sql`** dans SQL Editor
-2. Promouvez votre compte en admin (remplacez l'e-mail) :
+2. Exécutez ensuite le script **`supabase/migration-v3-reviews-booking-type.sql`** pour activer les avis modérés et le choix du type de réservation
+3. Promouvez votre compte en admin (remplacez l'e-mail) :
 
 ```sql
 update public.profiles set role = 'admin' where email = 'votre-email@gmail.com';
 ```
 
-3. Connectez-vous → accédez à **`admin.html`**
+4. Connectez-vous → accédez à **`admin.html`**
 
 ### Dashboard admin
 
@@ -59,6 +60,7 @@ update public.profiles set role = 'admin' where email = 'votre-email@gmail.com';
 |--------|-----------|
 | **Séjours phares** | Ajouter, modifier, supprimer séjours (image, prix, description) |
 | **Demandes clients** | Accepter ou rejeter les demandes de devis |
+| **Avis** | Approuver ou rejeter les avis avant publication |
 
 ## 7. Désactiver la confirmation e-mail (optionnel, pour tester)
 
@@ -73,7 +75,8 @@ En production, laissez-la activée.
 | `register.html` | Créer un compte |
 | `login.html` | Se connecter |
 | `compte.html` | Profil + historique des demandes |
-| Formulaire contact | Enregistre une demande si connecté |
+| Formulaire contact | Enregistre une demande si connecté, avec réservation libre ou évènement en groupe |
+| Section avis | Envoie une note 0 à 5 et un avis à valider avant affichage public |
 
 ## Mettre en ligne
 

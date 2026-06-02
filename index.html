@@ -25,6 +25,7 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#destinations">Destinations</a></li>
         <li><a href="#pourquoi">Pourquoi nous</a></li>
+        <li><a href="#avis">Avis</a></li>
         <li id="navAccount" style="display:none"><a href="compte.html">Mon compte</a></li>
         <li id="navAdmin" style="display:none"><a href="admin.html">Admin</a></li>
         <li id="navLogin"><a href="login.html">Connexion</a></li>
@@ -133,6 +134,46 @@
       </div>
     </section>
 
+    <section class="reviews section" id="avis">
+      <div class="container reviews-grid">
+        <div>
+          <header class="section-header reviews-header">
+            <span class="section-tag">Avis voyageurs</span>
+            <h2>Partagez votre expérience</h2>
+            <p>Les avis sont envoyés à l'équipe HB Travel pour validation avant leur affichage public.</p>
+          </header>
+          <div class="reviews-list" id="reviewsList">
+            <p class="loading-msg">Chargement des avis...</p>
+          </div>
+        </div>
+
+        <form class="review-form" id="reviewForm">
+          <h3>Laisser un avis</h3>
+          <p class="review-login-hint" id="reviewLoginHint">
+            <a href="login.html">Connectez-vous</a> pour envoyer un avis à valider.
+          </p>
+          <label>
+            Note
+            <select name="rating" required>
+              <option value="">Choisir une note</option>
+              <option value="5">5 étoiles</option>
+              <option value="4">4 étoiles</option>
+              <option value="3">3 étoiles</option>
+              <option value="2">2 étoiles</option>
+              <option value="1">1 étoile</option>
+              <option value="0">0 étoile</option>
+            </select>
+          </label>
+          <label>
+            Votre avis
+            <textarea name="comment" rows="5" required minlength="10" placeholder="Décrivez votre expérience avec HB Travel..."></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary btn-full">Envoyer mon avis</button>
+          <p class="form-note" id="reviewNote"></p>
+        </form>
+      </div>
+    </section>
+
     <section class="contact section" id="contact">
       <div class="container contact-grid">
         <div class="contact-info">
@@ -167,6 +208,13 @@
             Destination souhaitée
             <select name="destination" required>
               <option value="">Chargement des destinations…</option>
+            </select>
+          </label>
+          <label>
+            Type de réservation
+            <select name="booking_type" required>
+              <option value="reservation_libre">Réservation libre</option>
+              <option value="evenement_groupe">Évènement en groupe</option>
             </select>
           </label>
           <label>
@@ -218,6 +266,7 @@
   <script src="js/auth.js"></script>
   <script src="js/admin-api.js"></script>
   <script src="js/sejours.js"></script>
+  <script src="js/reviews.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

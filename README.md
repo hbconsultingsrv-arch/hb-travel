@@ -1,6 +1,6 @@
 # HB Travel — Site vitrine voyages halal
 
-Site vitrine avec **espace client** : inscription, connexion, profil et suivi des demandes.
+Site vitrine avec **espace client** : inscription, connexion, profil, suivi des demandes et avis clients modérés.
 
 ## Pages
 
@@ -10,7 +10,7 @@ Site vitrine avec **espace client** : inscription, connexion, profil et suivi de
 | `login.html` | Connexion |
 | `register.html` | Inscription |
 | `compte.html` | Espace client (profil + demandes) |
-| `admin.html` | Dashboard admin (séjours + demandes) |
+| `admin.html` | Dashboard admin (séjours + demandes + avis) |
 
 ## Backend (Supabase)
 
@@ -19,6 +19,8 @@ Le site reste hébergé sur **GitHub Pages** (gratuit). Les données passent par
 - Authentification e-mail / mot de passe
 - Profil : nom, e-mail, téléphone, adresse
 - Demandes de voyage avec statut
+- Type de réservation : réservation libre ou évènement en groupe
+- Avis clients notés de 0 à 5 étoiles, publiés après validation admin
 
 **Configuration obligatoire** → voir **[SETUP.md](SETUP.md)**
 

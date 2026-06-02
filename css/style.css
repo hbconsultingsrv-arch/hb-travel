@@ -453,6 +453,100 @@ body {
   font-style: normal;
 }
 
+/* Reviews */
+.reviews {
+  background: var(--cream);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.reviews-header {
+  text-align: left;
+  margin: 0 0 2rem;
+}
+
+.reviews-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.review-card,
+.review-form {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+
+.review-card blockquote {
+  color: var(--text-muted);
+  margin: 0.75rem 0 1rem;
+}
+
+.review-card cite {
+  color: var(--green-dark);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.review-stars {
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.review-form h3 {
+  font-family: var(--font-display);
+  color: var(--green-dark);
+}
+
+.review-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--green-dark);
+}
+
+.review-form select,
+.review-form textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: var(--white);
+}
+
+.review-form select:focus,
+.review-form textarea:focus {
+  outline: 2px solid var(--gold);
+  border-color: var(--gold);
+}
+
+.review-login-hint {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.review-login-hint a {
+  color: var(--green);
+  font-weight: 600;
+}
+
 /* Contact */
 .contact {
   background: var(--white);
@@ -753,6 +847,7 @@ body {
 .status-en_cours { background: #cce5ff; color: #004085; }
 .status-traite { background: #d4edda; color: #155724; }
 .status-annule { background: #f8d7da; color: #721c24; }
+.status-approuve { background: #d4edda; color: #155724; }
 
 .empty-state {
   text-align: center;
@@ -772,6 +867,10 @@ body {
 }
 
 .loading-msg.error {
+  color: #c0392b;
+}
+
+.empty-state.error {
   color: #c0392b;
 }
 
@@ -947,6 +1046,7 @@ body {
   }
 
   .why-grid,
+  .reviews-grid,
   .contact-grid,
   .footer-grid {
     grid-template-columns: 1fr;
